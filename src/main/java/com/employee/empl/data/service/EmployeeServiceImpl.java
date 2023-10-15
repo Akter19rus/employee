@@ -16,7 +16,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     List<EmployeesModel> employeesList = new ArrayList<>(List.of(
             // ВНИМАНИЕ! ЛЮБЫЕ СОВПАДЕНИЯ СЛУЧАЙНЫ
             new EmployeesModel("Владислав", "Силантьев"),
-            new EmployeesModel("Иван", "Иванов"),
             new EmployeesModel("Степан", "Степанов"),
             new EmployeesModel("Марина", "Малинина"),
             new EmployeesModel("Имя", "Фамилия"),
@@ -41,14 +40,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         return "Успешное добавление сотрудника!";
     }
 
-    public EmployeesModel deletedEmpl(@RequestParam("firstname") String firstName,
-                                      @RequestParam("lastname") String lastName) {
+    public String deletedEmpl(@RequestParam("firstname") String firstName,
+                              @RequestParam("lastname") String lastName) {
         EmployeesModel emp = new EmployeesModel(firstName, lastName);
         if (employeesList.contains(emp)) {
             employeesList.remove(emp);
-            return emp;
         }
-        return null;
+        return "Успешное удаление сотрудника!";
     }
 
     public String searchEmpl(@RequestParam("firstname") String firstName,
