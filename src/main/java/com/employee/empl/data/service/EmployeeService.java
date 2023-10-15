@@ -10,7 +10,7 @@ import java.util.Collection;
 public interface EmployeeService {
     String addEmpl(String firstName, String lastName) throws EmployeeAlreadyAddedException, EmployeeStorageIsFullException;
 
-    String deletedEmpl(String firstName, String lastName);
+    EmployeesModel deletedEmpl(String firstName, String lastName);
 
     String searchEmpl(String firstName, String lastName) throws EmployeeNotFoundException;
 

@@ -41,11 +41,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         return "Успешное добавление сотрудника!";
     }
 
-    public String deletedEmpl(@RequestParam("firstname") String firstName,
-                              @RequestParam("lastname") String lastName) {
+    public EmployeesModel deletedEmpl(@RequestParam("firstname") String firstName,
+                                      @RequestParam("lastname") String lastName) {
         EmployeesModel emp = new EmployeesModel(firstName, lastName);
-        employeesList.remove(emp);
-        return "Успешное удаление сотрудника!";
+        if (employeesList.contains(emp)) {
+            employeesList.remove(emp);
+            return emp;
+        }
+        return null;
     }
 
     public String searchEmpl(@RequestParam("firstname") String firstName,
